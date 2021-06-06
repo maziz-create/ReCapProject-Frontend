@@ -9,7 +9,9 @@ import { ColourService } from 'src/app/services/colour.service';
 })
 export class ColourComponent implements OnInit {
 
+  title="Renk Listesi"
   colours: Colour[] = [];
+  currentColour: Colour;
   dataLoaded = false;
 
   constructor(private colourService:ColourService) { }
@@ -23,5 +25,19 @@ export class ColourComponent implements OnInit {
       this.colours = response.data;
       this.dataLoaded = true;
     })
+  }
+
+  setCurrentColour(colour:Colour){
+    this.currentColour = colour;
+    // console.log(colour.colourName);
+  }
+
+  getCurrentColourClass(colour:Colour){
+    if (this.currentColour == colour) {
+      return "list-group-item active";
+    }
+    else{
+      return "list-group-item";
+    }
   }
 }

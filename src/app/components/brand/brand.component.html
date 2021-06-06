@@ -1,7 +1,9 @@
+<h3>{{title}}</h3>
 <div *ngIf="dataLoaded==false" class="spinner-border text-primary" role="status">
     <span class="visually-hidden">Loading...</span>
 </div>
-<table *ngIf="dataLoaded==true" class="table">
+
+<!-- <table *ngIf="dataLoaded==true" class="table table-dark table-striped">
     <thead>
         <tr>
             <th>Brand Name</th>
@@ -10,4 +12,9 @@
     <tr *ngFor="let brand of brands">
         <td>{{brand.name}}</td>
     </tr>
-</table>
+</table> -->
+
+<ul *ngIf="dataLoaded==true" class="list-group">
+    <li (click)="setCurrentBrand(brand)" routerLink="/cars/brand/{{brand.brandId}}" *ngFor="let brand of brands" [class]="getCurrentBrandClass(brand)">{{brand.brandName}}</li>
+</ul>
+<h3 *ngIf="currentBrand">{{currentBrand.brandName}} seçildi.</h3>

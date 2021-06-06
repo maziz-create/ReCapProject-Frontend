@@ -9,7 +9,9 @@ import { BrandService } from '../../services/brand.service';
 })
 export class BrandComponent implements OnInit {
 
+  title="Marka Listesi";
   brands: Brand[] = [];
+  currentBrand: Brand;
   dataLoaded = false;
 
   constructor(private brandService:BrandService) { }
@@ -23,6 +25,21 @@ export class BrandComponent implements OnInit {
       this.brands = response.data;
       this.dataLoaded = true;
     })
+  }
+
+  setCurrentBrand(brand: Brand){
+    this.currentBrand = brand;
+    // console.log(brand.brandId);
+    // console.log(brand.brandName);
+  }
+
+  getCurrentBrandClass(brand: Brand){
+    if (brand == this.currentBrand) {
+      return "list-group-item active";
+    }
+    else{
+      return "list-group-item";
+    }
   }
 }
 
