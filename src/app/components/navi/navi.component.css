@@ -1,0 +1,28 @@
+/* Navbar */
+
+#nav {
+    background-color: #333;
+}
+
+#nav ul {
+    list-style: none;
+    overflow: hidden;
+    padding-left: 0;
+}
+
+#nav ul li {
+    float: left;
+}
+
+#nav ul li a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+#nav ul li a:hover {
+    background-color: #111;
+}

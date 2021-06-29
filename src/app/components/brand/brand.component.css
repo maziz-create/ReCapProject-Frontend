@@ -2,3 +2,29 @@ h3 {
     text-align: center;
     margin-top: 0.4rem;
 }
+
+ul li:hover {
+    cursor: pointer;
+}
+
+div.brand {
+    margin-top: 2.7rem;
+}
+
+.list-group-item {
+    box-sizing: border-box;
+    transition: border 0.3s, background-color 0.1s;
+}
+
+.list-group-item:hover {
+    border-right: 1px solid rgba(17, 47, 146, 0.3);
+    border-left: 1px solid rgba(17, 47, 146, 0.3);
+    border-top: 0.1px solid rgba(17, 47, 146, 0.3);
+    border-bottom: 0.1px solid rgba(17, 47, 146, 0.3);
+}
+
+#title {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}

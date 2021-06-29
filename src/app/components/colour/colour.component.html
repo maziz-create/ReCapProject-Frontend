@@ -3,5 +3,9 @@
     <span class="visually-hidden">Loading...</span>
 </div>
 <ul *ngIf="dataLoaded==true" class="list-group">
-    <li (click)="setCurrentColour(colour)" routerLink="/cars/colour/{{colour.colourId}}" *ngFor="let colour of colours" [class]="getCurrentColourClass(colour)">{{colour.colourName}}</li>
+    <div class="mb-1 mt-0 search-form">
+        <input type="text" class="form-control" [(ngModel)]="filterText" placeholder="Color searching">
+    </div>
+    <li class="list-group-item" (click)="currentColour=null" routerLink="/cars" [ngClass]="{'active': !currentColour}">Tüm Renkler</li>
+    <li class="list-group-item" (click)="currentColour=colour" routerLink="/cars/colour/{{colour.colourId}}" *ngFor="let colour of colours | colorFilterPipe:filterText" [ngClass]="{'active': currentColour === colour}">{{colour.colourName}}</li>
 </ul>

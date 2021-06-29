@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Brand } from 'src/app/models/Entity/brand';
+import { ColourService } from 'src/app/services/colour.service';
 import { BrandService } from '../../services/brand.service';
 
 @Component({
@@ -9,12 +10,14 @@ import { BrandService } from '../../services/brand.service';
 })
 export class BrandComponent implements OnInit {
 
-  title="Marka Listesi";
-  brands: Brand[] = [];
-  currentBrand: Brand;
+  
+  title="Brand List";
+  brands: any;
+  currentBrand: any;
   dataLoaded = false;
+  filterText="";
 
-  constructor(private brandService:BrandService) { }
+  constructor(private brandService:BrandService, private colourService:ColourService) { }
 
   ngOnInit(): void {
     this.getBrands();
@@ -29,8 +32,10 @@ export class BrandComponent implements OnInit {
 
   setCurrentBrand(brand: Brand){
     this.currentBrand = brand;
-    // console.log(brand.brandId);
-    // console.log(brand.brandName);
+  }
+
+  setCurrentAllBrand(){
+    this.currentBrand = {brandId:0, brandName:"all"}
   }
 
   getCurrentBrandClass(brand: Brand){
@@ -41,5 +46,17 @@ export class BrandComponent implements OnInit {
       return "list-group-item";
     }
   }
-}
 
+  getAllBrandClass(){
+   if (!this.currentBrand || this.currentBrand == {brandId:0, brandName:"all"}) {
+    return "list-group-item active";
+   }
+   else {
+     return "list-group-item";
+   }
+  }
+
+  clearCurrentBrand(){
+    this.currentBrand = {brandId:0, brandName:''}
+  }
+}

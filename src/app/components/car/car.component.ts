@@ -17,10 +17,11 @@ export class CarComponent implements OnInit {
   imageBasePath = environment.baseUrl;
   defaultImg="/images/default2.jpg";
   // ----
-  title = "Kiralık Araba Listesi";
+  title = "Rental Car List";
   imgPath: string;
   cardetails: CarDetailDto[] = [];
   dataLoaded = false;
+  filterText="";
 
   constructor(private carService: CarService, private activatedRoute: ActivatedRoute) { }
 

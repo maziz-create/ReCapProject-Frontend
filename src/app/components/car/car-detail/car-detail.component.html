@@ -1,11 +1,10 @@
 <div *ngFor="let cardetail of cardetails" class="item active">
     <h1>{{cardetail.carName}} Araba Detay Sayfası</h1>
+
     <table id="table">
         <thead>
             <tr>
-                <th>Car Id</th>
                 <th>Car Name</th>
-                <th>Brad Id</th>
                 <th>Brad Name</th>
                 <th>Model Year</th>
                 <th>Daily Price</th>
@@ -14,9 +13,7 @@
         </thead>
         <tbody>
             <tr>
-                <td>{{cardetail.carId}}</td>
                 <td>{{cardetail.carName}}</td>
-                <td>{{cardetail.brandId}}</td>
                 <td>{{cardetail.brandName}}</td>
                 <td>{{cardetail.modelYear}}</td>
                 <td>{{cardetail.dailyPrice}}</td>
@@ -25,11 +22,27 @@
         </tbody>
     </table>
     <br>
-    <img *ngIf="cardetail.imagePaths.length==0" [src]="imageBasePath + defaultImg" alt="Car Image" style="width:100%;">
-    <img *ngIf="cardetail.imagePaths.length>0" [src]="imageBasePath + cardetail.imagePaths[0]" alt="Car Image" style="width:100%;">
-    <img *ngIf="cardetail.imagePaths.length>1" [src]="imageBasePath + cardetail.imagePaths[1]" alt="Car Image" style="width:100%;">
-    <img *ngIf="cardetail.imagePaths.length>2" [src]="imageBasePath + cardetail.imagePaths[2]" alt="Car Image" style="width:100%;">
-    <img *ngIf="cardetail.imagePaths.length>3" [src]="imageBasePath + cardetail.imagePaths[3]" alt="Car Image" style="width:100%;">
+    <h4>Araca Ait Resimler</h4>
+    <div *ngIf="cardetail.imagePaths.length==0" class="carimage">
+        <img *ngIf="cardetail.imagePaths.length==0" [src]="imageBasePath + defaultImg" alt="Car Image" style="width:100%;">
+    </div>
+
+    <div *ngIf="cardetail.imagePaths.length>0" class="carimage">
+        <img *ngIf="cardetail.imagePaths.length>0" [src]="imageBasePath + cardetail.imagePaths[0]" alt="Car Image" style="width:100%;">
+    </div>
+
+    <div *ngIf="cardetail.imagePaths.length>1" class="carimage">
+        <img *ngIf="cardetail.imagePaths.length>1" [src]="imageBasePath + cardetail.imagePaths[1]" alt="Car Image" style="width:100%;">
+    </div>
+
+    <div *ngIf="cardetail.imagePaths.length>2" class="carimage">
+        <img *ngIf="cardetail.imagePaths.length>2" [src]="imageBasePath + cardetail.imagePaths[2]" alt="Car Image" style="width:100%;">
+    </div>
+
+    <div *ngIf="cardetail.imagePaths.length>3" class="carimage">
+        <img *ngIf="cardetail.imagePaths.length>3" [src]="imageBasePath + cardetail.imagePaths[3]" alt="Car Image" style="width:100%;">
+    </div>
+
     <br><br>
 
 

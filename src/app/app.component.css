@@ -1,3 +1,17 @@
-/* h3 {
-    text-align: center;
+* {
+    box-sizing: border-box;
+}
+
+.col-md-9 {
+    margin-top: 1.2rem;
+}
+
+.row {
+    width: 100%;
+}
+
+
+/* .container {
+    margin-left: 100px;
+    margin-right: 100px;
 } */

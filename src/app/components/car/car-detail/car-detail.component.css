@@ -3,10 +3,21 @@
     border: 1px solid black;
     border-collapse: collapse;
     width: 100%;
+    margin-top: 1.6rem;
 }
 
 td,
 th {
     border: 1px solid #dddddd;
     text-align: left;
+}
+
+.carimage {
+    border: 0.1px solid rgba(0, 0, 0, 0.3);
+    margin-bottom: 0.3rem;
+    transition: opacity 0.3s;
+}
+
+.carimage:hover {
+    opacity: 0.95;
 }
