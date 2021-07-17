@@ -1,6 +1,9 @@
 export interface RentalDetailDto{
+    customerId:number;
+    carId:number;
     customerName:string;
     carName:string;
     brandName:string;
-    returnDate:Date; //uygun mudur ki... EVET
+    rentDate:Date;
+    returnDate?:Date;
 }

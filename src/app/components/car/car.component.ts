@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CarDetailDto } from 'src/app/models/Dto/carDetailDto';
+import { Brand } from 'src/app/models/Entity/brand';
 import { Car } from 'src/app/models/Entity/car';
 import { CarImage } from 'src/app/models/Entity/carImage';
+import { Colour } from 'src/app/models/Entity/colour';
 import { CarService } from 'src/app/services/car.service';
 import { environment } from 'src/environments/environment';
 
@@ -27,7 +29,10 @@ export class CarComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
-      if (params["brandId"]) {
+      if (params["brandId"] && params["colourId"]) {
+        this.getCarDetailsByColourIdAndBrandId(params["brandId"], params["colourId"] );
+      }
+      else if (params["brandId"]) {
         this.getCarDetailsByBrand(params["brandId"]);
       }
       else if (params["colourId"]) {
@@ -60,4 +65,10 @@ export class CarComponent implements OnInit {
     })
   }
 
+  getCarDetailsByColourIdAndBrandId(brandId:number, colourId:number) {
+    this.carService.getCarDetailsByBrandIdAndColourId(brandId,colourId).subscribe(response => {
+      this.cardetails = response.data;
+      this.dataLoaded = true;
+    })
+  }
 }

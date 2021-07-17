@@ -9,6 +9,7 @@
                 <th>Model Year</th>
                 <th>Daily Price</th>
                 <th>Description</th>
+                <th>Colour</th>
             </tr>
         </thead>
         <tbody>
@@ -18,6 +19,7 @@
                 <td>{{cardetail.modelYear}}</td>
                 <td>{{cardetail.dailyPrice}}</td>
                 <td>{{cardetail.description}}</td>
+                <td>{{cardetail.colourName}}</td>
             </tr>
         </tbody>
     </table>
@@ -45,6 +47,40 @@
 
     <br><br>
 
+    <div class="content">
+        <div class="col-md-12">
+            <div class="card">
 
+                <div class="card-header">
+                    <h5 class="title">Bu Aracı Kirala</h5>
+                </div>
+
+                <div class="card-body">
+                    <form>
+
+                        <div class="mb-3">
+                            <label for="rentDate">Kiralama Tarihi</label>
+                            <div class="form-group">
+                                <input type="date" id="rentDate" [(ngModel)]="rentDate" name="rent" class="form-control" placeholder="Kiralama Tarihi" />
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="returnDate">Teslim Tarihi</label>
+                            <div class="form-group">
+                                <input type="date" id="returnDate" [(ngModel)]="returnDate" name="return" class="form-control" placeholder="Teslim Tarihi" />
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+
+                <div class="card-footer">
+                    <button class="btn btn-fill btn-outline-success" (click)="addRental()">Kirala</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
 </div>

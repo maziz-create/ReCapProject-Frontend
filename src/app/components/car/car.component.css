@@ -13,6 +13,7 @@ h2 {
 
 .card {
     box-sizing: border-box;
+    /* width: 100%; */
     margin-bottom: 0.5rem;
     margin-right: 0.5rem;
     transition: box-shadow 0.3s, border-color 0.3s;
