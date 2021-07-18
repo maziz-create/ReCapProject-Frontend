@@ -1,20 +1,19 @@
-<app-navi></app-navi>
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <app-brand></app-brand>
-            <br><br>
-            <app-colour></app-colour>
-        </div>
-        <div class="col-md-9">
-            <router-outlet></router-outlet>
-            <br><br>
-        </div>
-    </div>
+<!-- 
+    min-vh-100 => min-width: 100vh;
+    flex-fill => size up to content
+
+-->
+
+<div class="min-vh-100 d-flex flex-column">
+    <header>
+        <app-navi></app-navi>
+    </header>
+
+    <main class="flex-fill">
+        <!-- <router-outlet></router-outlet> -->
+    </main>
+
+    <footer>
+        <app-footer></app-footer>
+    </footer>
 </div>
-
-
-
-<!-- <app-user></app-user>
-<br><br>
-<app-rental></app-rental> -->

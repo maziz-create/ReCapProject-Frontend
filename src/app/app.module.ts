@@ -23,6 +23,7 @@ import { CheckoutPageComponent } from './components/pages/checkout-page/checkout
 import { CarFilterComponent } from './components/car/car-filter/car-filter/car-filter.component';
 import { HiddenCreditCardNoPipe } from './pipes/hidden-credit-card-no.pipe';
 import { NotFoundPageComponent } from './components/pages/not-found-page/not-found-page.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { NotFoundPageComponent } from './components/pages/not-found-page/not-fou
     CheckoutPageComponent,
     HiddenCreditCardNoPipe,
     NotFoundPageComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

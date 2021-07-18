@@ -1,0 +1,37 @@
+.author {
+    width: 100px !important;
+}
+
+a {
+    transition: all .5s;
+}
+
+a:hover {
+    opacity: .7;
+}
+
+
+/* responsive for footer items */
+
+@media (max-width: 374px) {
+    #site-title {
+        font-size: 1rem !important;
+    }
+    .link-light {
+        font-size: 1rem !important;
+    }
+}
+
+@media (max-width: 575px) {
+    .author {
+        bottom: 5px;
+        left: 24px;
+    }
+}
+
+@media (min-width: 576px) {
+    .author {
+        bottom: 30px;
+        left: 47px;
+    }
+}
