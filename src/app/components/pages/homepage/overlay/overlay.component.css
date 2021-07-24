@@ -1,0 +1,137 @@
+.color-red {
+    color: #F47174;
+}
+
+.car-image {
+    z-index: 5;
+}
+
+/* tire track */
+
+.rotated {
+    top: 17.5rem;
+    left: 49rem;
+    text-align: center;
+    width: 59rem;
+    height: 15rem;
+    overflow: hidden;
+    opacity: .6;
+    z-index: 5;
+    transform: rotate(-5deg);
+}
+
+.rotated img {
+    width: 100%;
+}
+
+/* background of tire track (soft red) */
+
+.tire-track-bg {
+    top: 2rem;
+    right: -2rem;
+    transform: rotate(-5deg);
+    border-radius: 20px;
+    z-index: -1;
+    width: 48rem;
+    height: 32rem;
+    background-color: #F47174;
+}
+
+/* lines */
+
+.line {
+    width: 15rem;
+}
+
+.line-vertical img {
+    height: 15rem;
+}
+
+.line-reverse {
+    transform: rotate(180deg);
+}
+
+/* card */
+
+.card {
+    border-radius: 30px;
+    width: 15rem;
+    height: auto;
+}
+
+/* responsive */
+
+@media (max-width:1400px) {
+    .rotated {
+        top: 18rem;
+        left: 43rem;
+    }
+    .tire-track-bg {
+        right: -7rem;
+        height: 32.7rem;
+    }
+}
+
+@media (max-width: 1200px) {
+    html {
+        font-size: 15px;
+    }
+    .rotated {
+        top: 18.3rem;
+        left: 36rem;
+        width: 55rem;
+        height: 12rem;
+    }
+    .tire-track-bg {
+        top: 2rem;
+        right: -5rem;
+        width: 46rem;
+        height: 30rem;
+    }
+}
+
+@media (max-width: 991px) {
+    .rotated {
+        top: 24.3rem;
+        left: 21rem;
+        width: 35rem;
+        height: 11.5rem;
+    }
+    .tire-track-bg {
+        top: 13rem;
+        right: 5rem;
+        width: 35rem;
+        height: 24rem;
+    }
+
+    .form-div {
+        margin-top: 5rem !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .rotated {
+        top: 21.1rem;
+        left: 11rem;
+        width: 35rem;
+        height: 11rem;
+        margin-top: 5rem;
+    }
+    .tire-track-bg {
+        top: 13.1rem;
+        right: 5rem;
+        width: 24.5rem;
+        height: 19.85rem;
+        margin-top: 5rem;
+    }
+    .car-image-div {
+        margin-top: 5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .car-image-div {
+        background-color: #F47174;
+        border-radius: 10px;
+    }
+}

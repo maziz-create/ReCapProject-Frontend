@@ -1,0 +1,35 @@
+<div id="filter-by-brand" class="d-flex align-items-center">
+    <span class="text-primary fw-bold me-3">Brand:</span>
+
+    <div class="d-none d-lg-flex">
+        <button class="btn {{ isActive() }} me-2 rounded-1 brand-button" (click)="setActiveBrand()" routerLink="">
+            All
+        </button>
+
+        <!-- sliceBrand: anasayfada kaç tane brand'ı göstereceğimiz bir pipe -->
+        <button *ngFor="let brand of brands | sliceBrand: 5"
+            class="btn {{ isActive(brand.brandName) }} me-2 rounded-1 brand-button"
+            (click)="setActiveBrand(brand.brandName)" routerLink="" [queryParams]="{ brand: brand.brandName }">
+            {{ brand.brandName }}
+        </button>
+        <!-- [queryParams] ne işe yarıyor? aslında routerLink'in içine yazmadığımız şeyleri yazıyoruz. ben direkt buradaki
+        işlevini anlatayım: routerlink'e ekleme yapıyor. angular dökümantasyonlarında da mevcut örneği. 
+        üretilen link => brand=bmw örneğin... tabi routerLink'e ekleme yaptığını unutmayalım. eğer routerLink /cars/ olsaydı
+        üretilen link => /cars/brand=bmw olurdu.
+    -->
+
+        <a class="btn me-2 rounded-1 brand-button" routerLink="/cars">
+            Explore <span class="text-primary fw-bold">{{ brands.length }}+</span>
+        </a>
+    </div>
+
+    <div class="d-block d-lg-none">
+        <select class="form-select" [(ngModel)]="activeBrandName" routerLink=""
+            [queryParams]="{ brand: activeBrandName }">
+            <option [selected]="isSelected()" value="{{ undefined }}">All</option>
+            <option *ngFor="let brand of brands" value="{{ brand.brandName }}" [selected]="isSelected(brand.brandName)">
+                {{ brand.brandName }}
+            </option>
+        </select>
+    </div>
+</div>

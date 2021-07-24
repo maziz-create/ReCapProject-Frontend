@@ -9,7 +9,6 @@ import { ToastrModule } from 'ngx-toastr';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrandComponent } from './components/brand/brand.component';
 import { CarComponent } from './components/car/car.component';
 import { ColourComponent } from './components/colour/colour.component';
 import { NaviComponent } from './components/navi/navi.component';
@@ -24,12 +23,16 @@ import { CarFilterComponent } from './components/car/car-filter/car-filter/car-f
 import { HiddenCreditCardNoPipe } from './pipes/hidden-credit-card-no.pipe';
 import { NotFoundPageComponent } from './components/pages/not-found-page/not-found-page.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { HomepageComponent } from './components/pages/homepage/homepage.component';
+import { OverlayComponent } from './components/pages/homepage/overlay/overlay.component';
+import { SearchComponent } from './components/search/search.component';
+import { FilterByBrandBarComponent } from './components/pages/homepage/filter-by-brand-bar/filter-by-brand-bar.component';
+import { SliceBrandPipe } from './pipes/slice-brand.pipe';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    BrandComponent,
     CarComponent,
     ColourComponent,
     NaviComponent,
@@ -43,7 +46,12 @@ import { FooterComponent } from './components/footer/footer.component';
     CheckoutPageComponent,
     HiddenCreditCardNoPipe,
     NotFoundPageComponent,
-    FooterComponent
+    FooterComponent,
+    HomepageComponent,
+    OverlayComponent,
+    SearchComponent,
+    FilterByBrandBarComponent,
+    SliceBrandPipe
   ],
   imports: [
     BrowserModule,
