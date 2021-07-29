@@ -1,0 +1,86 @@
+<h1>BOOTSTRAP KISMI HENÜZ DÜZELTİLMEMİŞ OLAN CAR-FİLTER COMPONENT</h1>
+<div *ngIf="!isCompact" id="car-filter">
+    <div id="search-car">
+        <div class="form-floating">
+            <input type="text" class="form-control" id="search-car-input" placeholder="Car Name"
+                [(ngModel)]="carFilterText" (ngModelChange)="sendCarFilterText()" />
+            <!-- ngModelChange nedir? Output ve eventEmitter ile çalışan, gelen datanın eskisiyle değiştirilmesi, 
+                yani güncellenmesi için üretilmiş bir override(ezen). -->
+            <label for="search-car-input"><i class="fas fa-search"></i> Search</label>
+        </div>
+    </div>
+    <div id="brand-filter">
+        <div class="d-flex align-content-center my-3">
+            <span class="display-6 fw-bold d-flex align-items-center">Brand</span>
+            <div class="form-floating ms-3">
+                <input type="text" class="form-control border-0" id="search-brand-input" placeholder="Brand"
+                    [(ngModel)]="brandFilterText" />
+                <label for="search-brand-input" class="text-muted"><i class="fas fa-search"></i> Search</label>
+            </div>
+        </div>
+
+        <!-- [(ngModel)]="activeBrandName" kodunun işlevi => o anki seçilmiş olan option'u activeBrandName'e bağlıyor... -->
+        <!-- [compareWith]="isBrandSelected" kodunun işlevi => yeni data geldiğinde seçilen option siliniyor, silinmemesi için. -->
+        <select class="form-select" size="5" [(ngModel)]="activeBrandName" [compareWith]="isBrandSelected">
+            <option value="">All</option>
+            <option *ngFor="let brand of brands | filterBrand: brandFilterText" value="{{ brand.brandName }}">
+                {{ brand.brandName }}
+            </option>
+        </select>
+    </div>
+
+    <div id="colour-filter">
+        <div class="d-flex align-content-center my-3">
+            <span class="display-6 fw-bold d-flex align-items-center">Colour</span>
+            <div class="form-floating ms-3">
+                <input type="text" class="form-control border-0" id="search-colour-input" placeholder="Colour Name"
+                    [(ngModel)]="colourFilterText" />
+                <label for="search-colour-input" class="text-muted"><i class="fas fa-search"></i> Search</label>
+            </div>
+        </div>
+        <select class="form-select" size="5" [(ngModel)]="activeColourName" [compareWith]="isColourSelected">
+            <option value="">All</option>
+            <option *ngFor="let colour of colours | filterColour: colourFilterText" [value]="colour.colourName">
+                {{ colour.colourName }}
+            </option>
+        </select>
+    </div>
+
+    <button class="btn btn-primary my-3 w-100" routerLink="./"
+        [queryParams]="{ brand: activeBrandName, colour: activeColourName }">
+        Filter
+    </button>
+</div>
+
+<div *ngIf="isCompact" id="car-filter-compact" class="rounded-2 shadow-xl p-3 mb-3">
+    <div class="row">
+        <div class="col-2 fs-5 d-flex align-items-center">
+            <i class="fas fa-filter me-2"></i> <span class="fw-light">Filter by</span>
+        </div>
+        <div class="col">
+            <!-- [(ngModel)]="activeBrandName" kodunun işlevi => o anki seçilmiş olan option'u activeBrandName'e bağlıyor... -->
+            <select class="form-select" [(ngModel)]="activeBrandName" [compareWith]="isBrandSelected">
+                <option value="">All</option>
+                <option *ngFor="let brand of brands | filterBrand: brandFilterText" value="{{ brand.brandName }}">
+                    {{ brand.brandName }}
+                </option>
+            </select>
+        </div>
+
+        <div class="col">
+            <select class="form-select" [(ngModel)]="activeColourName" [compareWith]="isColourSelected">
+                <option value="">All</option>
+                <option *ngFor="let colour of colours | filterColour: colourFilterText" [value]="colour.colourName">
+                    {{ colour.colourName }}
+                </option>
+            </select>
+        </div>
+
+        <div class="col">
+            <button class="btn btn-primary w-100" routerLink="./"
+                [queryParams]="{ brand: activeBrandName, colour: activeColourName }">
+                Filter
+            </button>
+        </div>
+    </div>
+</div>

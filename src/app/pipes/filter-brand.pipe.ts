@@ -1,0 +1,14 @@
+import { Pipe, PipeTransform } from '@angular/core';
+import { Brand } from '../models/Entity/brand';
+
+@Pipe({
+  name: 'filterBrand'
+})
+export class FilterBrandPipe implements PipeTransform {
+
+  transform(value: Brand[], filterText: string): Brand[] {
+    return value.filter((b: Brand) =>
+      b.brandName.toLocaleLowerCase().includes(filterText.toLocaleLowerCase())
+    );
+  }
+}

@@ -11,7 +11,7 @@ import { ResponseModel } from '../models/ResponseModels/responseModel';
 })
 export class RentalService {
   
-  apiUrl = "https://localhost:44354/api/";
+  apiUrl = "https://localhost:44354/api/rentals";
   rentalCheckout?: Rental;
 
   checkIf:Boolean;
@@ -19,12 +19,22 @@ export class RentalService {
   constructor(private httpClient:HttpClient) { }
 
   getRentalDetails():Observable<ListResponseModel<RentalDetailDto>>{
-    let newPath=this.apiUrl+"rentals/getrentaldetails";
+    let newPath=this.apiUrl+"getrentaldetails";
     return this.httpClient.get<ListResponseModel<RentalDetailDto>>(newPath);
   }
 
   add(rental:Rental):Observable<ResponseModel> {
-    let newPath = this.apiUrl + "rentals/add";
+    let newPath = this.apiUrl + "add";
+    return this.httpClient.post<ResponseModel>(newPath, rental);
+  }
+
+  isRentable(rental: Rental): Observable<ResponseModel> {
+    let newPath = this.apiUrl + "isrentable";
+    return this.httpClient.post<ResponseModel>(newPath, rental);
+  }
+
+  checkFindeksScoreSufficiency(rental: Rental): Observable<ResponseModel> {
+    let newPath = this.apiUrl + "checkfindeksscoresufficiency";
     return this.httpClient.post<ResponseModel>(newPath, rental);
   }
 

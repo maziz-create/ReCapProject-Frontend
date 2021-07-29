@@ -1,31 +1,32 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CarDetailComponent } from './components/car/car-detail/car-detail.component';
-import { CarComponent } from './components/car/car.component';
+import { CarDetailPageComponent } from './components/pages/car-detail-page/car-detail-page.component';
+import { CarsPageComponent } from './components/pages/cars-page/cars-page.component';
 import { CheckoutPageComponent } from './components/pages/checkout-page/checkout-page.component';
 import { HomepageComponent } from './components/pages/homepage/homepage.component';
 import { NotFoundPageComponent } from './components/pages/not-found-page/not-found-page.component';
 
 const routes: Routes = [
-  // {path:'',pathMatch:"full", component:CarComponent},
   {
     path: '', pathMatch: "full",
     component: HomepageComponent
   },
   {
     path: 'cars',
-    component: CarComponent
+    component: CarsPageComponent
   },
-  // {
-  //   path: 'cars',
-  //   component: CarsPageComponent,
-  // },
-  { path: 'cars/brand/:brandId', component: CarComponent },
-  { path: 'cars/colour/:colourId', component: CarComponent },
-  { path: 'cars/car/:carId', component: CarDetailComponent },
-  { path: 'cars/filter/:brandId/:colourId', component: CarComponent },
-  { path: 'checkout', component: CheckoutPageComponent },
-  { path: '404', component: NotFoundPageComponent },
+  {
+    path: 'checkout',
+    component: CheckoutPageComponent
+  },
+  {
+    path: '404',
+    component: NotFoundPageComponent
+  },
+  {
+    path: 'car/:carId',
+    component: CarDetailPageComponent
+  }
 ];
 
 @NgModule({

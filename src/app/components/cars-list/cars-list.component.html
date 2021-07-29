@@ -1,0 +1,11 @@
+<h2>AHMETTEN KOPYA TASARIM MEVCUT, YENİSİ YAPILACAK.</h2>
+<div *ngIf="dataLoaded && (carDetails | filterCarDetail: carFilterText).length == 0" class="alert alert-info w-100"
+    role="alert">
+    Not exist car by filter yet!
+</div>
+
+<div id="cars-list" class="row mx-3">
+    <app-loading-spinner *ngIf="!dataLoaded"></app-loading-spinner>
+    <app-car-card *ngFor="let carDetail of carDetails | filterCarDetail: carFilterText" [carDetail]="carDetail"
+    class="{{ class }} p-3 pt-0"></app-car-card>
+</div>
