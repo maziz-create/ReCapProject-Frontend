@@ -1,0 +1,31 @@
+card-img {
+    height: 20rem;
+}
+
+img {
+    width: 17rem;
+    height: 13rem;
+    object-fit: contain;
+}
+
+.btn-primary {
+    background-color: #F47174;
+    border-color: #F47174;
+    transition: all .3s;
+}
+
+.btn-primary:hover {
+    background-color: #d46163;
+}
+
+@media (max-width: 737px) {
+    img {
+        width: 25rem;
+    }
+}
+
+@media (min-width: 768px) {
+    img {
+        width: 13rem;
+    }
+}

@@ -61,14 +61,52 @@
 
 /* responsive */
 
-@media (max-width:1400px) {
+@media (min-width: 1401px) {
+    .title {
+        transform: rotate(-2deg);
+        padding-bottom: 12rem;
+    }
+
     .rotated {
-        top: 18rem;
-        left: 43rem;
+        transform: rotate(-2deg);
+        width: 70rem;
+        height: 15rem;
+        top: 21rem;
+        left: 15rem;
     }
     .tire-track-bg {
-        right: -7rem;
-        height: 32.7rem;
+        transform: rotate(-2deg);
+        top: .5rem;
+        right: 0rem;
+        width: 100%;
+        height: 35.8rem;
+    }
+
+    .search-component {
+        margin-top: 11rem;
+    }
+}
+
+@media (max-width:1400px) {
+    .title {
+        transform: rotate(-3deg);
+        padding-bottom: 5rem;
+    }
+    .rotated {
+        transform: rotate(-3deg);
+        top: 18rem;
+        left: 15rem;
+    }
+    .tire-track-bg {
+        transform: rotate(-3deg);
+        top: 1rem;
+        right: 0rem;
+        width: 100%;
+        height: 32.6rem;
+    }
+
+    .search-component {
+        margin-top: 15rem;
     }
 }
 
@@ -76,32 +114,24 @@
     html {
         font-size: 15px;
     }
-    .rotated {
-        top: 18.3rem;
-        left: 36rem;
-        width: 55rem;
-        height: 12rem;
+
+    .title {
+        transform: rotate(0);
     }
     .tire-track-bg {
-        top: 2rem;
-        right: -5rem;
-        width: 46rem;
-        height: 30rem;
+        top: 1rem;
+        right: 30rem;
+        width: 30rem;
+        height: 22rem;
     }
 }
 
 @media (max-width: 991px) {
-    .rotated {
-        top: 24.3rem;
-        left: 21rem;
-        width: 35rem;
-        height: 11.5rem;
-    }
     .tire-track-bg {
         top: 13rem;
         right: 5rem;
         width: 35rem;
-        height: 24rem;
+        height: 15rem;
     }
 
     .form-div {
@@ -110,15 +140,8 @@
 }
 
 @media (max-width: 767px) {
-    .rotated {
-        top: 21.1rem;
-        left: 11rem;
-        width: 35rem;
-        height: 11rem;
-        margin-top: 5rem;
-    }
     .tire-track-bg {
-        top: 13.1rem;
+        top: 11rem;
         right: 5rem;
         width: 24.5rem;
         height: 19.85rem;

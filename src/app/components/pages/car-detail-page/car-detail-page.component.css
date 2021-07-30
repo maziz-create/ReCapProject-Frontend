@@ -1,0 +1,24 @@
+.bg-light {
+    background-color: #F47174 !important;
+}
+
+img {
+    height: 30rem;
+    object-fit: contain;
+    width: 100% !important;
+}
+
+.carousel-control-prev-icon {
+    padding: 1.5rem;
+    margin-right: 5rem !important;
+}
+
+.carousel-control-next-icon {
+    padding: 1.5rem;
+    margin-left: 6rem !important;
+}
+
+.border-secondary {
+    color: #F47174;
+    font-weight: 400;
+}

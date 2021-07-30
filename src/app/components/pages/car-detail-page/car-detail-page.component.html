@@ -1,4 +1,3 @@
-<h1>AHMETTEN KOPYA TASARIM MEVCUT, YENİSİ YAPILACAK.</h1>
 <div class="container-fluid container-md py-5 mb-5">
     <app-loading-spinner *ngIf="!car && !brand && !carImages"></app-loading-spinner>
     <div *ngIf="car && brand && carImages" class="row">
@@ -74,7 +73,7 @@
                         id="rent-end-date-input" required />
                 </div>
                 <button type="submit" (click)="rentCar()"
-                    class="col-lg btn btn-primary rounded-1 mt-3 p-3 m-lg-0 p-lg-0">
+                    class="col-lg btn btn-warning rounded-1 mt-3 p-3 m-lg-0 p-lg-0">
                     Book!
                 </button>
             </form>

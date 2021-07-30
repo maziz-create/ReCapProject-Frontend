@@ -1,1 +1,20 @@
-<p>car-card works!</p>
+<div class="card col-12 bg-light rounded-2 shadow overflow-hidden">
+  <div routerLink="/car/{{ carDetail.carId }}"
+    class="card-img d-flex justify-content-center align-items-center cursor-pointer">
+    <img src="{{ carImageUrl }}" class="card-img-top" alt="Rent {{ carDetail.brandName }} {{
+            carDetail.carName
+          }} - ReCapProject" />
+  </div>
+  <div class="card-body">
+    <span class="model-year border border-secondary text-muted rounded-1 px-3 fw-light">
+      {{ carDetail.modelYear }}
+    </span>
+    <h5 class="card-title">
+      {{ carDetail.brandName }} {{ carDetail.carName }}
+    </h5>
+    <p class="mt-1 card-text text-primary fs-3">${{ carDetail.dailyPrice }}</p>
+    <button routerLink="/car/{{ carDetail.carId }}" class="btn btn-primary w-100">
+      Rent Now
+    </button>
+  </div>
+</div>
