@@ -32,6 +32,7 @@ import { CarCardComponent } from './components/car-card/car-card.component';
 import { CarDetailPageComponent } from './components/pages/car-detail-page/car-detail-page.component';
 import { StoreModule } from '@ngrx/store';
 import { AppReducers } from './store/app.reducer';
+import { LoginPageComponent } from './components/pages/login-page/login-page.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { AppReducers } from './store/app.reducer';
     LoadingSpinnerComponent,
     FilterCarDetailPipe,
     CarCardComponent,
-    CarDetailPageComponent
+    CarDetailPageComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,
