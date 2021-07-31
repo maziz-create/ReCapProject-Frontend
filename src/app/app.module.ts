@@ -33,6 +33,7 @@ import { CarDetailPageComponent } from './components/pages/car-detail-page/car-d
 import { StoreModule } from '@ngrx/store';
 import { AppReducers } from './store/app.reducer';
 import { LoginPageComponent } from './components/pages/login-page/login-page.component';
+import { PasswordInputComponent } from './components/password-input/password-input.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { LoginPageComponent } from './components/pages/login-page/login-page.com
     FilterCarDetailPipe,
     CarCardComponent,
     CarDetailPageComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    PasswordInputComponent
   ],
   imports: [
     BrowserModule,

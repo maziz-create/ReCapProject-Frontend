@@ -35,7 +35,7 @@ export class LoginPageComponent implements OnInit {
   createLoginForm() {
     this.loginForm = this.formBuilder.group({
       email: ['', Validators.required], //'' kısmı başlangıç değeri
-      password: ['', Validators.required],
+      password: ['', Validators.required], // Form Control Accessor sayesinde bunu bunraya yazabiliyoruz. Yoksa hiç demedin mi bu başka componentten geldi nasıl oldu?
     });
   }
 
