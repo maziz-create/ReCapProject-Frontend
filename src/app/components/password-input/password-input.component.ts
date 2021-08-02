@@ -1,3 +1,27 @@
+/*
+  Control Value Accessor özünde ne işimize yaradı? 
+  Buz password-input component'i login-page componentte kullandık ve kullanım esnasinda haliyle formControlName=passoword kodunu yazdık. 
+  Fakat hata verdi... Çünkü başka componentten geliyor ve erişimi yok. 
+  Yani burada Control Value Accessor interface'inin methodlarını uygulayarak özünde bu işlevi yerine getiriyoruz.
+*/
+
+/*
+  Çok önemli genel bir not:
+  Angular dökümantasyonunda Control Value Accessor kısmında başlangıçta interface olduğunu söyleyip şu şekilde devam edilmiş =>
+  --
+  interface ControlValueAccessor {
+  writeValue(obj: any): void
+  registerOnChange(fn: any): void
+  registerOnTouched(fn: any): void
+  setDisabledState(isDisabled: boolean)?: void
+  --
+  Bunun manası şudur. Bu bir interface olduğu için haliyle onun methodlarını implemente etmek zorundasın. 
+  Ama hepsini etmek zorunda değilsin. 4 seçeneğin 3ünde : void derken
+  en sonuncusunda yani setDisabledState ' de ?: void ifadesi yer almakta. 
+  Yani ilk 3 method void döndürmesi gerekiyorken yani implemente etmen şart iken sonuncusunda şart değil...
+}
+*/
+
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
@@ -8,6 +32,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
+      //ng value accessor'u kimin için kullanacağız ? => passwordInputComponent
       useExisting: forwardRef(() => PasswordInputComponent),
       multi: true,
     },
@@ -19,25 +44,20 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   },
 })
 
-/*
-  Control Value Accessor özünde ne işimize yaradı? 
-  Buz password-input component'i login-page componentte kullandık ve kullanım esnasinda haliyle formControlName=passoword kodunu yazdık. 
-  Fakat hata verdi... Çünkü başka componentten geliyor ve erişimi yok. 
-  Yani burada Control Value Accessor interface'inin methodlarını uygulayarak özünde bu işlevi yerine getiriyoruz.
-*/
 export class PasswordInputComponent implements OnInit, ControlValueAccessor {
 
   @Input() id: string = 'password-input';
   @Input() label: string = 'Enter your password';
   @Input() invalidFeedback: string = 'Please enter your password.';
 
-  @Input() errors: any;
+  //input tanımlama amacı yukarıdan(login-page component) gelecek olan errors, touched ve dirty'i kendi html'imde kullanmak.
+  @Input() errors: any; 
   @Input() touched: any;
   @Input() dirty: any;
 
   passwordHidden: boolean = true;
 
-  value: string = ''; //this is the updated value that the class accesses
+  value: string = ''; //this is the updated value that the class accesses,, bize dışarıdan gelen güncellenmiş value'nin atanacağı, password-inputta yarattığımız kopya değişken.
   onChange: any = () => { };
   onTouched: any = () => { };
 
@@ -54,6 +74,7 @@ export class PasswordInputComponent implements OnInit, ControlValueAccessor {
   }
 
   //When the value in the UI is changed, this method will invoke a callback function
+  //başka bir kaynak => formun yenilenmesi gerektiğinde  bu fonksiyon çağırılır diyor.
   registerOnChange(fn: any): void {
     this.onChange = fn;
   }

@@ -17,9 +17,11 @@
                 </div>
 
                 <div class="mb-3">
+                    <!-- ControlValueAccessor sayesinde app-password-input içersinde formControlName'i kullanabiliyoruz. -->
                     <app-password-input formControlName="password" [errors]="loginForm.controls['password'].errors"
-              [touched]="loginForm.controls['password'].touched" [dirty]="loginForm.controls['password'].dirty">
-            </app-password-input>
+                        [touched]="loginForm.controls['password'].touched"
+                        [dirty]="loginForm.controls['password'].dirty">
+                    </app-password-input>
                 </div>
 
                 <button (click)="login()" class="btn btn-primary btn-lg rounded-1 shadow-xl w-100">

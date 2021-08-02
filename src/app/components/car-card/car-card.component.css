@@ -8,16 +8,6 @@ img {
     object-fit: contain;
 }
 
-.btn-primary {
-    background-color: #F47174;
-    border-color: #F47174;
-    transition: all .3s;
-}
-
-.btn-primary:hover {
-    background-color: #d46163;
-}
-
 @media (max-width: 737px) {
     img {
         width: 25rem;

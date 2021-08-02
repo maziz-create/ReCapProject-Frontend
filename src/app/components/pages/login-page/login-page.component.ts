@@ -14,8 +14,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class LoginPageComponent implements OnInit {
 
-  loginForm!: FormGroup;
-
+  loginForm!: FormGroup; // !: => şu an boş fakat dolduracağız içini, söz.
   passwordHidden: boolean = true;
 
   constructor(
@@ -41,15 +40,15 @@ export class LoginPageComponent implements OnInit {
 
   login() {
     console.log(
-      `!! file: login-page.component.ts ~ line 44 ~ this.loginForm.valid`,
+      `!! file: login-page.component.ts ~ line 43 ~ this.loginForm.valid`,
       this.loginForm.valid
     );
     console.log(
-      `!! file: login-page.component.ts ~ line 48 ~ ...this.loginForm.value`,
+      `!! file: login-page.component.ts ~ line 47 ~ ...this.loginForm.value`,
       this.loginForm.value
     );
     if (!this.loginForm.valid) {
-      return;
+      return; //buradaki return'un amacı fonksiyonu bitirmektir.
     }
     // ... ' nın anlamı => this.loginForm.value'deki her şeyi al.
     let loginModel: LoginModel = { ...this.loginForm.value };
@@ -62,6 +61,7 @@ export class LoginPageComponent implements OnInit {
         this.getUserDetailByEmail(this.loginForm.get('email')?.value);
         this.toastrService.info(response.message);
         this.router.navigateByUrl(''); //bizi homepage'e götür...
+        console.log("authservice.login olundu. localstorage'ye userMail ve tokenModel eklenmiş olmalı.")
       },
       (errorResponse) => this.toastrService.error(errorResponse.error)
     );

@@ -4,6 +4,7 @@ import { CarDetailPageComponent } from './components/pages/car-detail-page/car-d
 import { CarsPageComponent } from './components/pages/cars-page/cars-page.component';
 import { CheckoutPageComponent } from './components/pages/checkout-page/checkout-page.component';
 import { HomepageComponent } from './components/pages/homepage/homepage.component';
+import { LoginPageComponent } from './components/pages/login-page/login-page.component';
 import { NotFoundPageComponent } from './components/pages/not-found-page/not-found-page.component';
 
 const routes: Routes = [
@@ -12,21 +13,29 @@ const routes: Routes = [
     component: HomepageComponent
   },
   {
+    path: 'brand/:brandName',
+    component: HomepageComponent
+  },
+  {
     path: 'cars',
     component: CarsPageComponent
+  },
+  {
+    path: 'car/:carId',
+    component: CarDetailPageComponent
   },
   {
     path: 'checkout',
     component: CheckoutPageComponent
   },
   {
+    path: 'login',
+    component: LoginPageComponent
+  },
+  {
     path: '404',
     component: NotFoundPageComponent
   },
-  {
-    path: 'car/:carId',
-    component: CarDetailPageComponent
-  }
 ];
 
 @NgModule({
