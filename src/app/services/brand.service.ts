@@ -22,9 +22,4 @@ export class BrandService {
     let newPath = this.apiUrl + "getbyid?id=" + brandId;
     return this.httpClient.get<SingleResponseModel<Brand>>(newPath);
   }
-
-  getBrandByCarId(carId: number): Observable<SingleResponseModel<Brand>> {
-    let newPath = this.apiUrl + "getbrandbycarid?id="+carId;
-    return this.httpClient.get<SingleResponseModel<Brand>>(newPath);
-  }
 }
