@@ -25,13 +25,11 @@ export class AppComponent {
   getUserDetailByEmailFromLocalStorage() {
     let userMail: string | null = this.localStorageService.get<string>('userMail');
     if (!userMail) return;
-
+    
     this.getUserDetailByEmail(userMail);
   }
 
   getUserDetailByEmail(mail: string) {
-    this.userService
-      .getUserDetailByEmail(mail)
-      .subscribe((response) => this.authService.setUserDetail(response.data));
+    this.userService.getUserDetailByEmail(mail).subscribe((response) => this.authService.setUserDetail(response.data));
   }
 }

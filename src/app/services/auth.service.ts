@@ -50,9 +50,20 @@ export class AuthService {
 
   isAuthenticated(userMail?: string | null, requiredRoles?: string[]): Observable<ResponseModel> {
     let newPath = this.apiUrl + "isauthenticated";
-    return this.httpClient.get<ResponseModel>(newPath);
+    return this.httpClient.get<ResponseModel>(newPath,
+      {
+        params:
+          userMail && requiredRoles
+            ? {
+              userMail: userMail,
+              requiredRoles: requiredRoles.join(','),
+            }
+            : {},
+      }
+    );
   }
 
+  //for registering
   setUserDetail(userDetail: UserDetailDto) {
     this.store.dispatch(setUserDetail({ userDetail: userDetail }));
   }

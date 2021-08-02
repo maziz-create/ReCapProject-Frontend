@@ -51,7 +51,7 @@ export class PasswordInputComponent implements OnInit, ControlValueAccessor {
   @Input() invalidFeedback: string = 'Please enter your password.';
 
   //input tanımlama amacı yukarıdan(login-page component) gelecek olan errors, touched ve dirty'i kendi html'imde kullanmak.
-  @Input() errors: any; 
+  @Input() errors: any;
   @Input() touched: any;
   @Input() dirty: any;
 
@@ -69,26 +69,28 @@ export class PasswordInputComponent implements OnInit, ControlValueAccessor {
   }
 
   //This will write the value to the view if the the value changes occur on the model programmatically
-  writeValue(value: string/*this value is updated by programmatic changes*/): void {
+  //türkçesi => kullanıcının input ettiği veriyi alıp parente gönderilecek ya hani, bu işte o değişen şeyi yakalayan adam.
+  writeValue(value: string): void {/*this value is updated by programmatic changes*/
     this.value = value;
   }
 
   //When the value in the UI is changed, this method will invoke a callback function
   //başka bir kaynak => formun yenilenmesi gerektiğinde  bu fonksiyon çağırılır diyor.
+  //türkçesi => değişen şeyi parent'a bildiren adam bu.
   registerOnChange(fn: any): void {
     this.onChange = fn;
   }
 
   //When the element is touched, this method will get called
+  //kullanıcı dokunduğu zaman bunu parent'a bildirecek adam bu.
   registerOnTouched(fn: any): void {
     this.onTouched = fn;
   }
 
+  //formun disabled/enabled durumlarını parent'a bildiren
   setDisabledState?(isDisabled: boolean): void {
     this.disabled = isDisabled;
   }
-
-  //--
 
   togglePasswordHidden() {
     this.passwordHidden = !this.passwordHidden;
