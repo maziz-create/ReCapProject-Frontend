@@ -38,6 +38,10 @@ const routes: Routes = [
     component: RegisterPageComponent
   },
   {
+    path: 'logout',
+    component: LogoutPageComponent
+  }
+  {
     path: '404',
     component: NotFoundPageComponent
   },

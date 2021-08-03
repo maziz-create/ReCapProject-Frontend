@@ -35,6 +35,7 @@ import { AppReducers } from './store/app.reducer';
 import { LoginPageComponent } from './components/pages/login-page/login-page.component';
 import { PasswordInputComponent } from './components/password-input/password-input.component';
 import { RegisterPageComponent } from './components/pages/register-page/register-page.component';
+import { LogoutPageComponent } from './components/pages/logout-page/logout-page.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { RegisterPageComponent } from './components/pages/register-page/register
     CarDetailPageComponent,
     LoginPageComponent,
     PasswordInputComponent,
-    RegisterPageComponent
+    RegisterPageComponent,
+    LogoutPageComponent
   ],
   imports: [
     BrowserModule,

@@ -30,6 +30,7 @@ export class RegisterPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.createRegisterForm();
+    this.isLoginControl();
   }
 
   createRegisterForm() {
