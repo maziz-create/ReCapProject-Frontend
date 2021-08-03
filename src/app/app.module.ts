@@ -36,6 +36,7 @@ import { LoginPageComponent } from './components/pages/login-page/login-page.com
 import { PasswordInputComponent } from './components/password-input/password-input.component';
 import { RegisterPageComponent } from './components/pages/register-page/register-page.component';
 import { LogoutPageComponent } from './components/pages/logout-page/logout-page.component';
+import { WalletPageComponent } from './components/pages/wallet-page/wallet-page.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import { LogoutPageComponent } from './components/pages/logout-page/logout-page.
     LoginPageComponent,
     PasswordInputComponent,
     RegisterPageComponent,
-    LogoutPageComponent
+    LogoutPageComponent,
+    WalletPageComponent
   ],
   imports: [
     BrowserModule,

@@ -5,6 +5,7 @@ import { CarsPageComponent } from './components/pages/cars-page/cars-page.compon
 import { CheckoutPageComponent } from './components/pages/checkout-page/checkout-page.component';
 import { HomepageComponent } from './components/pages/homepage/homepage.component';
 import { LoginPageComponent } from './components/pages/login-page/login-page.component';
+import { LogoutPageComponent } from './components/pages/logout-page/logout-page.component';
 import { NotFoundPageComponent } from './components/pages/not-found-page/not-found-page.component';
 import { RegisterPageComponent } from './components/pages/register-page/register-page.component';
 
@@ -40,7 +41,7 @@ const routes: Routes = [
   {
     path: 'logout',
     component: LogoutPageComponent
-  }
+  },
   {
     path: '404',
     component: NotFoundPageComponent
