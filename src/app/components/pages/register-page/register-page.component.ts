@@ -15,6 +15,7 @@ import { UserService } from 'src/app/services/user.service';
 export class RegisterPageComponent implements OnInit {
 
   registerForm!: FormGroup;
+  isLogin: boolean = false;
 
   passwordHidden: boolean = true; //ilk değeri
 
@@ -49,8 +50,8 @@ export class RegisterPageComponent implements OnInit {
       this.localStorageService.set('tokenModel', response.data);
       this.localStorageService.set('userMail', this.registerForm.get('email')?.value);
       this.getUserDetailByEmail(this.registerForm.get('email')?.value);
-      this.toastrService.info(response.message);
       this.router.navigate(['']);
+      this.toastrService.info("Kayıt başarıyla tamamlandı!");
     });
   }
 
@@ -70,6 +71,10 @@ export class RegisterPageComponent implements OnInit {
 
   isPasswordHiddenIcon(): string {
     return this.passwordHidden ? 'fa-eye-slash' : 'fa-eye text-primary';
+  }
+
+  isLoginControl(): void {
+    this.isLogin = this.localStorageService.get<string>('userMail') ? true : false;
   }
 
 }

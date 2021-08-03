@@ -16,6 +16,7 @@ export class LoginPageComponent implements OnInit {
 
   loginForm!: FormGroup; // !: => şu an boş fakat dolduracağız içini, söz.
   passwordHidden: boolean = true;
+  isLogin: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -29,6 +30,7 @@ export class LoginPageComponent implements OnInit {
   ngOnInit(): void {
     //login page açıldığı an form build edilsin.
     this.createLoginForm();
+    this.isLoginControl();
   }
 
   createLoginForm() {
@@ -39,14 +41,6 @@ export class LoginPageComponent implements OnInit {
   }
 
   login() {
-    console.log(
-      `!! file: login-page.component.ts ~ line 43 ~ this.loginForm.valid`,
-      this.loginForm.valid
-    );
-    console.log(
-      `!! file: login-page.component.ts ~ line 47 ~ ...this.loginForm.value`,
-      this.loginForm.value
-    );
     if (!this.loginForm.valid) {
       return; //buradaki return'un amacı fonksiyonu bitirmektir.
     }
@@ -59,9 +53,8 @@ export class LoginPageComponent implements OnInit {
         this.localStorageService.set('tokenModel', response.data);
         this.localStorageService.set('userMail', this.loginForm.get('email')?.value);
         this.getUserDetailByEmail(this.loginForm.get('email')?.value);
-        this.toastrService.info(response.message);
         this.router.navigateByUrl(''); //bizi homepage'e götür...
-        console.log("authservice.login olundu. localstorage'ye userMail ve tokenModel eklenmiş olmalı.")
+        this.toastrService.info("Başarıyla giriş yapıldı!");
       },
       (errorResponse) => this.toastrService.error(errorResponse.error)
     );
@@ -84,6 +77,10 @@ export class LoginPageComponent implements OnInit {
 
   isPasswordHiddenIcon(): string {
     return this.passwordHidden ? 'fa-eye-slash' : 'fa-eye text-primary';
+  }
+
+  isLoginControl(): void {
+    this.isLogin = this.localStorageService.get<string>('userMail') ? true : false;
   }
 
 }

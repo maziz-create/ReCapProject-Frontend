@@ -1,4 +1,9 @@
-<div class="container">
+<div *ngIf="isLogin">
+    <h3 class="text-center">Zaten giriş yapılmış. Anasayfaya gitmek için lütfen tıklayınız => <a routerLink="">Ana
+            Sayfaya Git</a>
+    </h3>
+</div>
+<div *ngIf="!isLogin" class="container">
     <div class="row">
         <div class="col-md my-auto">
             <h1 class="fw-bold mb-5">Log in</h1>
