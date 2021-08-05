@@ -2,7 +2,7 @@ export interface User{
     id:number;
     firstName:string;
     lastName:string;
-    eMail:string;
+    email:string;
     passwordHash:string;
     passwordSalt:string;
     status:boolean;

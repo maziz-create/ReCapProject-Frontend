@@ -1,10 +1,9 @@
 import { createAction, props } from '@ngrx/store';
-import { UserDetailDto } from 'src/app/models/Dto/userDetailDto';
+import { User } from 'src/app/models/Entity/user';
 
 export const setUserDetail = createAction(
   'Set UserDetail',
-  props<{ userDetail: UserDetailDto }>()
+  props<{ userDetail: User }>()
 );
-
 
 export const deleteUserDetail = createAction('Delete User Detail');

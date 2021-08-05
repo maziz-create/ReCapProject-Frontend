@@ -21,8 +21,14 @@ export class UserService {
     return this.httpClient.get<ListResponseModel<User>>(newPath);
   }
 
-  getUserDetailByEmail(userMail: string): Observable<SingleResponseModel<UserDetailDto>> {
+  //bu fonki user döndürüyor userdetaildto değil.
+  getUserDetailByEmail(userMail: string): Observable<SingleResponseModel<User>> {
     let newPath = this.apiUrl + "getuserdetailbyemail?email=" + userMail;
+    return this.httpClient.get<SingleResponseModel<User>>(newPath);
+  }
+
+  getUserDetailDtoByUserId(userId: number): Observable<SingleResponseModel<UserDetailDto>> {
+    let newPath = this.apiUrl + "getuserdetaildtobyuserid?id="+userId;
     return this.httpClient.get<SingleResponseModel<UserDetailDto>>(newPath);
   }
 

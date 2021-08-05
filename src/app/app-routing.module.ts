@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginGuard } from 'src/guards/login.guard';
 import { AccountPageComponent } from './components/pages/account-page/account-page.component';
 import { CarDetailPageComponent } from './components/pages/car-detail-page/car-detail-page.component';
 import { CarsPageComponent } from './components/pages/cars-page/cars-page.component';
@@ -46,10 +47,12 @@ const routes: Routes = [
   },
   {
     path: 'wallet',
+    canActivate: [LoginGuard],
     component: WalletPageComponent
   },
   {
     path: 'account',
+    canActivate: [LoginGuard],
     component: AccountPageComponent,
   },
   {

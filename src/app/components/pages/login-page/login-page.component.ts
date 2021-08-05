@@ -60,6 +60,10 @@ export class LoginPageComponent implements OnInit {
     );
   }
 
+  logout() {
+    this.router.navigate(['logout']);
+  }
+
   getUserDetailByEmail(mail: string) {
     this.userService.getUserDetailByEmail(mail).subscribe((response) => {
       //gelen userDetail'i store'a gönderdik.
@@ -81,6 +85,7 @@ export class LoginPageComponent implements OnInit {
 
   isLoginControl(): void {
     this.isLogin = this.localStorageService.get<string>('userMail') ? true : false;
+    //not: burada token kontrolü de yapmak daha mantıklı olur
   }
 
 }

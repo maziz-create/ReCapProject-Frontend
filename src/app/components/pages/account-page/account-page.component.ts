@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { first } from 'rxjs/operators';
 import { UserDetailDto } from 'src/app/models/Dto/userDetailDto';
 import { Findeks } from 'src/app/models/Entity/findeks';
+import { User } from 'src/app/models/Entity/user';
 import { UserDetailUpdateModel } from 'src/app/models/Entity/userDetailUpdateModel';
 import { AuthService } from 'src/app/services/auth.service';
 import { FindeksService } from 'src/app/services/findeks.service';
@@ -19,8 +20,13 @@ import { UserService } from 'src/app/services/user.service';
 export class AccountPageComponent implements OnInit {
 
   accountForm!: FormGroup;
-  userDetail$: Observable<UserDetailDto | undefined> = this.authService.userDetail$;
-  userDetail?: UserDetailDto;
+  userDetail$: Observable<User | undefined> = this.authService.userDetail$;
+  userDetail: UserDetailDto;
+
+  customerId: number;
+
+  newUser: User;
+
   findeks!: Findeks;
   currentPasswordHidden: boolean = true;
   newPasswordHidden: boolean = true;
@@ -37,15 +43,18 @@ export class AccountPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUserDetailsFromStore();
+    // this.getUserDetailDtoByUserId(this.userDetail$.);
   }
 
   getUserDetailsFromStore() {
     this.authService.userDetail$.pipe(first()).subscribe((userDetail) => {
+      console.log("gelen user=>", userDetail);
       if (!userDetail) return; //auth state'te userDetail yoksa eğer fonksiyonu durdur.
+      //auth state'ten aldığın userDetaili bizdekine yapıştır.
 
-      this.userDetail = userDetail; //auth state'ten aldığın userDetaili bizdekine yapıştır.
+      this.getUserDetailDtoByUserId(userDetail.id);
       this.createAccountFrom();
-      this.getFindeksByCustomerId(userDetail.customerId);
+      this.getFindeksByUserId(userDetail.id);
     });
   }
 
@@ -60,8 +69,8 @@ export class AccountPageComponent implements OnInit {
     });
   }
 
-  getFindeksByCustomerId(customerId: number) {
-    this.findeksService.getByCustomerId(customerId).subscribe((response) => {
+  getFindeksByUserId(userId: number) {
+    this.findeksService.getByUserId(userId).subscribe((response) => {
       this.findeks = response.data;
       this.accountForm
         .get('nationalIdentity')
@@ -87,10 +96,25 @@ export class AccountPageComponent implements OnInit {
           lastName: userDetailUpdateModel.lastName,
           companyName: userDetailUpdateModel.companyName,
         };
-        this.authService.setUserDetail(newUserDetail);
-        this.toastrService.success("Kullanıcı bilgi güncelleme başarılı!");
+        this.getUserDetailByEmail(newUserDetail.email);
+        this.authService.setUserDetail(this.newUser);
+        this.toastrService.success("Kullanıcı bilgileri güncellendi.");
         this.router.navigate(['']);
       });
   }
 
+  //user döndürür
+  getUserDetailByEmail(email: string) {
+    this.userService.getUserDetailByEmail(email).subscribe((response) => {
+      this.newUser = response.data;
+    })
+  }
+
+  //userdetail döndürür
+  getUserDetailDtoByUserId(userId: number) {
+    this.userService.getUserDetailDtoByUserId(userId).subscribe((response) => {
+      this.userDetail = response.data;
+      this.customerId = response.data.customerId;
+    })
+  }
 }

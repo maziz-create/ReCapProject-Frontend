@@ -107,14 +107,14 @@
         <div class="row">
             <div class="col">
                 <div class="mb-3">
-                    <app-password-input formControlName="currentPassword"
+                    <app-password-input id="password-input-current" formControlName="currentPassword"
                         [errors]="accountForm.controls['currentPassword'].errors" [touched]="true"
                         [dirty]="accountForm.controls['currentPassword'].dirty"></app-password-input>
                 </div>
             </div>
             <div class="col">
                 <div class="mb-3">
-                    <app-password-input formControlName="newPassword" label="Enter new password (Optional)">
+                    <app-password-input id="password-input-new" formControlName="newPassword" label="Enter new password (Optional)">
                     </app-password-input>
                 </div>
             </div>

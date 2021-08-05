@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { first } from 'rxjs/operators';
 import { UserDetailDto } from 'src/app/models/Dto/userDetailDto';
 import { Brand } from 'src/app/models/Entity/brand';
 import { Car } from 'src/app/models/Entity/car';
@@ -13,6 +14,7 @@ import { CarImageService } from 'src/app/services/car-image.service';
 import { CarService } from 'src/app/services/car.service';
 import { ColourService } from 'src/app/services/colour.service';
 import { RentalService } from 'src/app/services/rental.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-car-detail-page',
@@ -29,12 +31,13 @@ export class CarDetailPageComponent implements OnInit {
   DateTimeNow: Date = new Date();
   rentStartDate: Date = this.DateTimeNow;
   rentEndDate: Date = this.DateTimeNow;
-  userDetail?: UserDetailDto;
+  userDetail: UserDetailDto;
 
   constructor(
     private authService: AuthService,
     private activatedRoute: ActivatedRoute,
     private brandService: BrandService,
+    private userService: UserService,
     private carService: CarService,
     private colourService: ColourService,
     private carImageService: CarImageService,
@@ -49,11 +52,12 @@ export class CarDetailPageComponent implements OnInit {
     });
     this.getUserDetailsFromStore();
   }
-
+  
   getUserDetailsFromStore() {
-    this.authService.userDetail$.subscribe(
-      (userDetail) => (this.userDetail = userDetail)
-    );
+    this.authService.userDetail$.pipe(first()).subscribe((userDetail) => {
+      if (!userDetail) return; //auth state'te userDetail yoksa eğer fonksiyonu durdur.
+      this.getUserDetailDtoByUserId(userDetail.id); 
+    });
   }
 
   getCarById(carId: number) {
@@ -64,6 +68,12 @@ export class CarDetailPageComponent implements OnInit {
       this.getColourById(this.car.colourId);
       this.getCarImagesById(this.car.id);
     });
+  }
+
+  getUserDetailDtoByUserId(userId: number) {
+    this.userService.getUserDetailDtoByUserId(userId).subscribe((response) => {
+      this.userDetail = response.data;
+    })
   }
 
   getBrandById(brandId: number) {
@@ -90,7 +100,6 @@ export class CarDetailPageComponent implements OnInit {
       this.toastr.info('You must log in.');
       return;
     }
-
     let rental: Rental = {
       carId: this.car.id,
       customerId: this.userDetail.customerId,
@@ -98,7 +107,6 @@ export class CarDetailPageComponent implements OnInit {
       rentEndDate: new Date(this.rentEndDate),
       returnDate: undefined,
     };
-
     /*post olarak gönderdiğimiz isRentable '  ye burada subscribe olduğumuz zaman gelen istek pozitif ise eğer iç kısımlar çalışıyor. 
     Denetlenmesi bu şekilde yani. 
     Aynı şekilde belki araba müsait ama findeks score az kalıyor ise kiralanamayacağı için isRentable'ın içine yazdık checkFindeksScoreSufficiency ' i; */

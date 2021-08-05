@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { first } from 'rxjs/operators';
 import { UserDetailDto } from 'src/app/models/Dto/userDetailDto';
 import { CreditCard } from 'src/app/models/Entity/creditCard';
 import { AuthService } from 'src/app/services/auth.service';
 import { CreditCardService } from 'src/app/services/credit-card.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-wallet-page',
@@ -19,22 +21,20 @@ export class WalletPageComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
+    private userService: UserService,
     private creditCardService: CreditCardService,
     private toastrService: ToastrService
   ) { }
 
   ngOnInit(): void {
-    this.getUserDetailFromStore();
+    this.getUserDetailsFromStore();
   }
 
   //AuthState'den getiriyor. Oraya zaten giriş yaparken bilgileri dispatcher ' e göndermiştik.
-  getUserDetailFromStore() {
-    this.authService.userDetail$.subscribe((userDetail) => {
-      if (userDetail) {
-        this.userDetail = userDetail;
-
-        this.getAllCreditCards();
-      }
+  getUserDetailsFromStore() {
+    this.authService.userDetail$.pipe(first()).subscribe((userDetail) => {
+      if (!userDetail) return; //auth state'te userDetail yoksa eğer fonksiyonu durdur.
+      this.getUserDetailDtoByUserId(userDetail.id); 
     });
   }
 
@@ -56,6 +56,12 @@ export class WalletPageComponent implements OnInit {
         );
       });
     }
+  }
+
+  getUserDetailDtoByUserId(userId: number) {
+    this.userService.getUserDetailDtoByUserId(userId).subscribe((response) => {
+      this.userDetail = response.data;
+    })
   }
 
 }

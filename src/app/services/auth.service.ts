@@ -7,6 +7,7 @@ import { UserDetailDto } from '../models/Dto/userDetailDto';
 import { LoginModel } from '../models/Entity/loginModel';
 import { RegisterModel } from '../models/Entity/registerModel';
 import { TokenModel } from '../models/Entity/tokenModel';
+import { User } from '../models/Entity/user';
 import { ResponseModel } from '../models/ResponseModels/responseModel';
 import { SingleResponseModel } from '../models/ResponseModels/singleResponseModel';
 import { AppState } from '../store/app.reducer';
@@ -20,9 +21,7 @@ export class AuthService {
 
   apiUrl = "https://localhost:44354/api/auth/";
 
-  //tam alttaki şeyi yapma amacımız değişen userDetaili view'e bildirmek, view'i render etmek.
-
-  userDetail$: Observable<UserDetailDto | undefined> = this.store
+  userDetail$: Observable<User | undefined> = this.store
     .select((s) => s.appAuth)
     .pipe(map((b) => b.userDetail));
 
@@ -63,8 +62,7 @@ export class AuthService {
     );
   }
 
-  //for registering
-  setUserDetail(userDetail: UserDetailDto) {
+  setUserDetail(userDetail: User) {
     this.store.dispatch(setUserDetail({ userDetail: userDetail }));
   }
 

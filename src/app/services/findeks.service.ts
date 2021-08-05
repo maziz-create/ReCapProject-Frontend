@@ -14,14 +14,12 @@ export class FindeksService {
   constructor(private httpClient: HttpClient) { }
 
   getByCustomerId(customerId: number): Observable<SingleResponseModel<Findeks>> {
-    let newPath = this.apiUrl + "getbycustomerid";
-    return this.httpClient.get<SingleResponseModel<Findeks>>(newPath, {
-      //normalde newPath ile tanımladığımız ?customerid= .. mevzusu params ile de mümkün.
-      //diyoruz ki gelecek olan alanlardan customerId alanı, bizim verdiğimiz customerId'ın string hali işte.
-        params: {
-          customerId: customerId.toString(),
-        },
-      }
-    );
+    let newPath = this.apiUrl + "getbycustomerid?customerid=" + customerId;
+    return this.httpClient.get<SingleResponseModel<Findeks>>(newPath);
+  }
+
+  getByUserId(userId: number): Observable<SingleResponseModel<Findeks>> {
+    let newPath = this.apiUrl + "getbyuserid?userid=" + userId;
+    return this.httpClient.get<SingleResponseModel<Findeks>>(newPath);
   }
 }

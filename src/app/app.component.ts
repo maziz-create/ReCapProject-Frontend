@@ -30,6 +30,8 @@ export class AppComponent {
   }
 
   getUserDetailByEmail(mail: string) {
-    this.userService.getUserDetailByEmail(mail).subscribe((response) => this.authService.setUserDetail(response.data));
+    this.userService.getUserDetailByEmail(mail).subscribe((response) => 
+    this.authService.setUserDetail(response.data)
+    );
   }
 }

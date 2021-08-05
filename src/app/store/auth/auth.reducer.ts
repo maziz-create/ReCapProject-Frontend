@@ -1,9 +1,9 @@
 import { createReducer, on } from '@ngrx/store';
 import { setUserDetail, deleteUserDetail } from './auth.actions';
-import { UserDetailDto } from 'src/app/models/Dto/userDetailDto';
+import { User } from 'src/app/models/Entity/user';
 
 export interface AuthState {
-  userDetail?: UserDetailDto;
+  userDetail?: User;
 }
 
 const initialAuthState: AuthState = {
