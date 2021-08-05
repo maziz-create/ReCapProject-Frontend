@@ -1,0 +1,31 @@
+<div id="filter-by-color-buttons" class="d-flex d-none d-lg-block">
+    <button class="btn {{ isActive() }} me-2 rounded-1" (click)="setActiveColour()" routerLink="">
+        All
+    </button>
+
+    <div class="dropdown d-inline">
+        <button class="btn btn-light dropdown-toggle text-secondary" type="button" id="search-brand-button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-search"></i>
+        </button>
+        <ul class="dropdown-menu bg-light shadow p-0" aria-labelledby="search-brand-button">
+            <li>
+                <input class="form-control" type="text" [(ngModel)]="filterText" />
+            </li>
+        </ul>
+    </div>
+
+    <div *ngFor="let colour of colours | filterColour: filterText" class="btn" (click)="setActiveColour(colour.colourName)"
+        routerLink="">
+        <i class="fas fa-circle fa-2x text-shadow-xl" [ngStyle]="{ color: colour.colourName }"></i>
+    </div>
+</div>
+
+<div id="filter-by-color-select-menu" class="d-block d-lg-none">
+    <select class="form-select" (change)="routeToCarsByColour($event)" value="{{ activeColourName }}">
+        <option [selected]="isSelected()">All</option>
+        <option *ngFor="let colour of colours" value="{{ colour.colourName }}" [selected]="isSelected(colour.colourName)">
+            {{ colour.colourName }}
+        </option>
+    </select>
+</div>

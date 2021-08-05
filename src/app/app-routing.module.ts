@@ -101,15 +101,15 @@ const routes: Routes = [
         component: BrandEditFormComponent,
       },
       {
-        path: 'colors',
+        path: 'colours',
         component: ColoursDashboardComponent,
       },
       {
-        path: 'colors/add',
+        path: 'colours/add',
         component: ColourAddFormComponent,
       },
       {
-        path: 'colors/edit/:id',
+        path: 'colours/edit/:id',
         component: ColourEditFormComponent,
       },
     ]

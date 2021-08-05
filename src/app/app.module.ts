@@ -46,6 +46,7 @@ import { ColourEditFormComponent } from './components/pages/admin-dashboard-page
 import { CarAddFormComponent } from './components/pages/admin-dashboard-page/cars-dashboard/car-add-form/car-add-form.component';
 import { CarEditFormComponent } from './components/pages/admin-dashboard-page/cars-dashboard/car-edit-form/car-edit-form.component';
 import { CarImageFormComponent } from './components/pages/admin-dashboard-page/cars-dashboard/car-image-form/car-image-form.component';
+import { FilterByColourComponent } from './components/filter-by-colour/filter-by-colour.component';
 
 @NgModule({
   declarations: [
@@ -86,7 +87,8 @@ import { CarImageFormComponent } from './components/pages/admin-dashboard-page/c
     ColourEditFormComponent,
     CarAddFormComponent,
     CarEditFormComponent,
-    CarImageFormComponent
+    CarImageFormComponent,
+    FilterByColourComponent
   ],
   imports: [
     BrowserModule,

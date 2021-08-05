@@ -28,22 +28,22 @@
                     </select>
                 </div>
 
-                <div id="color-input" class="col-md mb-3">
-                    <label for="color-input" class="d-flex align-content-center">
+                <div id="colour-input" class="col-md mb-3">
+                    <label for="colour-input" class="d-flex align-content-center">
                         <span class="fw-bold d-flex align-items-center">Color</span>
                         <div class="form-floating ms-3">
-                            <input type="text" formControlName="colorFilterText" class="form-control border-0"
-                                id="search-color-input" placeholder="Color Name" />
-                            <label for="search-color-input" class="text-muted"><i class="fas fa-search"></i>
+                            <input type="text" formControlName="colourFilterText" class="form-control border-0"
+                                id="search-colour-input" placeholder="colour Name" />
+                            <label for="search-colour-input" class="text-muted"><i class="fas fa-search"></i>
                                 Search</label>
                         </div>
                     </label>
-                    <select id="color-input" formControlName="colorId" class="form-select" size="5">
+                    <select id="colour-input" formControlName="colourId" class="form-select" size="5">
                         <option *ngFor="
-                let color of colours
-                  | filterColour: this.carAddForm.value['colorFilterText']
-              " value="{{ color.colourId }}">
-                            {{ color.colourName }}
+                let colour of colours
+                  | filterColour: this.carAddForm.value['colourFilterText']
+              " value="{{ colour.colourId }}">
+                            {{ colour.colourName }}
                         </option>
                     </select>
                 </div>
