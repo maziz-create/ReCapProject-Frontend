@@ -38,6 +38,17 @@ import { RegisterPageComponent } from './components/pages/register-page/register
 import { LogoutPageComponent } from './components/pages/logout-page/logout-page.component';
 import { WalletPageComponent } from './components/pages/wallet-page/wallet-page.component';
 import { AccountPageComponent } from './components/pages/account-page/account-page.component';
+import { AdminDashboardPageComponent } from './components/pages/admin-dashboard-page/admin-dashboard-page.component';
+import { BrandsDashboardComponent } from './components/pages/admin-dashboard-page/brands-dashboard/brands-dashboard.component';
+import { ColoursDashboardComponent } from './components/pages/admin-dashboard-page/colours-dashboard/colours-dashboard.component';
+import { CarsDashboardComponent } from './components/pages/admin-dashboard-page/cars-dashboard/cars-dashboard.component';
+import { BrandAddFormComponent } from './components/pages/admin-dashboard-page/brands-dashboard/brand-add-form/brand-add-form.component';
+import { ColourAddFormComponent } from './components/pages/admin-dashboard-page/colours-dashboard/colour-add-form/colour-add-form.component';
+import { BrandEditFormComponent } from './components/pages/admin-dashboard-page/brands-dashboard/brand-edit-form/brand-edit-form.component';
+import { ColourEditFormComponent } from './components/pages/admin-dashboard-page/colours-dashboard/colour-edit-form/colour-edit-form.component';
+import { CarAddFormComponent } from './components/pages/admin-dashboard-page/cars-dashboard/car-add-form/car-add-form.component';
+import { CarEditFormComponent } from './components/pages/admin-dashboard-page/cars-dashboard/car-edit-form/car-edit-form.component';
+import { CarImageFormComponent } from './components/pages/admin-dashboard-page/cars-dashboard/car-image-form/car-image-form.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +81,18 @@ import { AccountPageComponent } from './components/pages/account-page/account-pa
     RegisterPageComponent,
     LogoutPageComponent,
     WalletPageComponent,
-    AccountPageComponent
+    AccountPageComponent,
+    AdminDashboardPageComponent,
+    BrandsDashboardComponent,
+    ColoursDashboardComponent,
+    CarsDashboardComponent,
+    BrandAddFormComponent,
+    ColourAddFormComponent,
+    BrandEditFormComponent,
+    ColourEditFormComponent,
+    CarAddFormComponent,
+    CarEditFormComponent,
+    CarImageFormComponent
   ],
   imports: [
     BrowserModule,

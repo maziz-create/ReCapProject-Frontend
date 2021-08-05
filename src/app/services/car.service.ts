@@ -7,6 +7,7 @@ import { Car } from '../models/Entity/car';
 import { CarImage } from '../models/Entity/carImage';
 import { Colour } from '../models/Entity/colour';
 import { ListResponseModel } from '../models/ResponseModels/listResponseModel';
+import { ResponseModel } from '../models/ResponseModels/responseModel';
 import { SingleResponseModel } from '../models/ResponseModels/singleResponseModel';
 
 @Injectable({
@@ -16,6 +17,21 @@ export class CarService {
 
   apiUrl = "https://localhost:44354/api/cars/";
   constructor(private httpClient: HttpClient) { }
+
+  add(car: Car): Observable<ResponseModel> {
+    let newPath = this.apiUrl + "add";
+    return this.httpClient.post<ResponseModel>(newPath, car);
+  }
+
+  delete(car: Car): Observable<ResponseModel> {
+    let newPath = this.apiUrl + "delete";
+    return this.httpClient.post<ResponseModel>(newPath, car);
+  }
+
+  update(car: Car): Observable<ResponseModel> {
+    let newPath = this.apiUrl + "update";
+    return this.httpClient.post<ResponseModel>(newPath, car);
+  }
 
   getCarDetails(): Observable<ListResponseModel<CarDetailDto>> {
     let newPath = this.apiUrl + "getcardetails";

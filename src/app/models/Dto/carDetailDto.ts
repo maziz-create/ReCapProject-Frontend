@@ -1,5 +1,3 @@
-import { CarImage } from "../Entity/carImage";
-
 export interface CarDetailDto{
     carId:number;
     carName:string;

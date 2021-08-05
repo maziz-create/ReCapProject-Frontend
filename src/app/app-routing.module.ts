@@ -1,7 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminGuard } from 'src/guards/admin.guard';
 import { LoginGuard } from 'src/guards/login.guard';
 import { AccountPageComponent } from './components/pages/account-page/account-page.component';
+import { AdminDashboardPageComponent } from './components/pages/admin-dashboard-page/admin-dashboard-page.component';
+import { BrandAddFormComponent } from './components/pages/admin-dashboard-page/brands-dashboard/brand-add-form/brand-add-form.component';
+import { BrandEditFormComponent } from './components/pages/admin-dashboard-page/brands-dashboard/brand-edit-form/brand-edit-form.component';
+import { BrandsDashboardComponent } from './components/pages/admin-dashboard-page/brands-dashboard/brands-dashboard.component';
+import { CarAddFormComponent } from './components/pages/admin-dashboard-page/cars-dashboard/car-add-form/car-add-form.component';
+import { CarEditFormComponent } from './components/pages/admin-dashboard-page/cars-dashboard/car-edit-form/car-edit-form.component';
+import { CarImageFormComponent } from './components/pages/admin-dashboard-page/cars-dashboard/car-image-form/car-image-form.component';
+import { CarsDashboardComponent } from './components/pages/admin-dashboard-page/cars-dashboard/cars-dashboard.component';
+import { ColourAddFormComponent } from './components/pages/admin-dashboard-page/colours-dashboard/colour-add-form/colour-add-form.component';
+import { ColourEditFormComponent } from './components/pages/admin-dashboard-page/colours-dashboard/colour-edit-form/colour-edit-form.component';
+import { ColoursDashboardComponent } from './components/pages/admin-dashboard-page/colours-dashboard/colours-dashboard.component';
 import { CarDetailPageComponent } from './components/pages/car-detail-page/car-detail-page.component';
 import { CarsPageComponent } from './components/pages/cars-page/cars-page.component';
 import { CheckoutPageComponent } from './components/pages/checkout-page/checkout-page.component';
@@ -54,6 +66,53 @@ const routes: Routes = [
     path: 'account',
     canActivate: [LoginGuard],
     component: AccountPageComponent,
+  },
+  {
+    path: 'admin',
+    component: AdminDashboardPageComponent,
+    canActivate: [LoginGuard, AdminGuard],
+    children: [
+      {
+        path: 'cars',
+        component: CarsDashboardComponent,
+      },
+      {
+        path: 'cars/add',
+        component: CarAddFormComponent,
+      },
+      {
+        path: 'cars/edit/:id',
+        component: CarEditFormComponent,
+      },
+      {
+        path: 'cars/edit/images/:carId',
+        component: CarImageFormComponent,
+      },
+      {
+        path: 'brands',
+        component: BrandsDashboardComponent,
+      },
+      {
+        path: 'brands/add',
+        component: BrandAddFormComponent,
+      },
+      {
+        path: 'brands/edit/:id',
+        component: BrandEditFormComponent,
+      },
+      {
+        path: 'colors',
+        component: ColoursDashboardComponent,
+      },
+      {
+        path: 'colors/add',
+        component: ColourAddFormComponent,
+      },
+      {
+        path: 'colors/edit/:id',
+        component: ColourEditFormComponent,
+      },
+    ]
   },
   {
     path: '404',
