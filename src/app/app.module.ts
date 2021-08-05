@@ -7,10 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ColourComponent } from './components/colour/colour.component';
 import { NaviComponent } from './components/navi/navi.component';
-import { UserComponent } from './components/user/user.component';
-import { RentalComponent } from './components/rental/rental.component';
 import { CheckoutPageComponent } from './components/pages/checkout-page/checkout-page.component';
 import { HiddenCreditCardNoPipe } from './pipes/hidden-credit-card-no.pipe';
 import { NotFoundPageComponent } from './components/pages/not-found-page/not-found-page.component';
@@ -53,10 +50,7 @@ import { CarImageFormComponent } from './components/pages/admin-dashboard-page/c
 @NgModule({
   declarations: [
     AppComponent,
-    ColourComponent,
     NaviComponent,
-    UserComponent,
-    RentalComponent,
     CheckoutPageComponent,
     HiddenCreditCardNoPipe,
     NotFoundPageComponent,
