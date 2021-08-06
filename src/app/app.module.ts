@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -47,6 +47,8 @@ import { CarAddFormComponent } from './components/pages/admin-dashboard-page/car
 import { CarEditFormComponent } from './components/pages/admin-dashboard-page/cars-dashboard/car-edit-form/car-edit-form.component';
 import { CarImageFormComponent } from './components/pages/admin-dashboard-page/cars-dashboard/car-image-form/car-image-form.component';
 import { FilterByColourComponent } from './components/filter-by-colour/filter-by-colour.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { HttpErrorInterceptor } from './interceptors/http-error.interceptor';
 
 @NgModule({
   declarations: [
@@ -98,11 +100,14 @@ import { FilterByColourComponent } from './components/filter-by-colour/filter-by
     ReactiveFormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
-      positionClass:"toast-bottom-right"
+      positionClass: "toast-bottom-right"
     }),
     StoreModule.forRoot(AppReducers)
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
