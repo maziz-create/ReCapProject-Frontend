@@ -61,6 +61,7 @@ export class WalletPageComponent implements OnInit {
   getUserDetailDtoByUserId(userId: number) {
     this.userService.getUserDetailDtoByUserId(userId).subscribe((response) => {
       this.userDetail = response.data;
+      this.getAllCreditCards();
     })
   }
 
