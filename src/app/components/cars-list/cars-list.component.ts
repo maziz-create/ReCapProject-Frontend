@@ -15,7 +15,7 @@ export class CarsListComponent implements OnInit {
 
   @Input() carFilterText: string = ''; //parent'tan doldurulmuş olarak gelecek.
   @Input() class: string = ''; //parent'larda kullanırken bootstrap class'ı ile col belirleyeceğiz.
-
+  @Input() id: string = 'cars-list'
 
   constructor(
     private carService: CarService,

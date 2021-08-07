@@ -3,8 +3,8 @@
     Not exist car by filter yet!
 </div>
 
-<div id="cars-list" class="row mx-3">
+<div [id]="id" class="row mx-3">
     <app-loading-spinner *ngIf="!dataLoaded"></app-loading-spinner>
     <app-car-card *ngFor="let carDetail of carDetails | filterCarDetail: carFilterText" [carDetail]="carDetail"
-    class="p-3 pt-0 col-12 col-sm col-xl-3"></app-car-card>
+    class="{{class}} p-3 pt-0 col-12 col-sm col-xl-3"></app-car-card>
 </div>

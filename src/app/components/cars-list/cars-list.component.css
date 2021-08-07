@@ -1,5 +1,17 @@
-/* ne işe yarayacağından şu an için emin olamadığım kod.
-test ederken göreceğim. */
 #cars-list {
     min-height: 552px; 
+}
+
+@media (max-width: 767px) {
+    #cars-list-for-cars-page {
+        min-width: 100%;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    .padding-0-for-cars-page {
+        padding-left: 0 !important;
+        padding-right: 0 !important; 
+
+    }
 }

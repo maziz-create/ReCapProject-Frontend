@@ -4,7 +4,7 @@
             <app-car-filter (carFilterTextEvent)="receiveCarFilterText($event)"></app-car-filter>
         </div>
         <div class="col">
-            <app-cars-list [carFilterText]="carFilterText" class="col-4"></app-cars-list>
+            <app-cars-list id="cars-list-for-cars-page" [carFilterText]="carFilterText" class="col-xl-4 padding-0-for-cars-page"></app-cars-list>
         </div>
     </div>
 </div>
