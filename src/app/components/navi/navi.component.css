@@ -1,3 +1,10 @@
+nav {
+    background-color: antiquewhite;
+    border-end-end-radius: 5px;
+    border-end-start-radius: 5px;
+    margin-bottom: 1rem;
+}
+
 .navbar-brand {
     font-size: 1.8rem;
     z-index: 1;
@@ -32,3 +39,7 @@
     font-weight: bold;
     z-index: 1;
 }
+
+/* .dropdown {
+    background-color: #00adb5;
+} */

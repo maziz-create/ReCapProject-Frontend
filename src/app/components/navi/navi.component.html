@@ -26,7 +26,7 @@
         </div>
 
         <div *ngIf="userDetail$ | async" class="dropdown">
-            <button class="btn btn-light dropdown-toggle" type="button" id="accountMenu" data-bs-toggle="dropdown"
+            <button class="btn btn-primary dropdown-toggle" type="button" id="accountMenu" data-bs-toggle="dropdown"
                 aria-expanded="false">
                 {{ (userDetail$ | async)?.firstName }}
                 {{ (userDetail$ | async)?.lastName }}

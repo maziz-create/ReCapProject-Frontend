@@ -1,4 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+    background-color: #dfdfdb;
+}
+
 .btn-primary {
     background-color: #F47174;
     border-color: #F47174;
