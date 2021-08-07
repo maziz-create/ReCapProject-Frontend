@@ -23,7 +23,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class CarDetailPageComponent implements OnInit {
 
-  //alttaki (!:) işaretinin anlamını bilmiyorum.
+  //alttaki (!:) işaretinin anlamı => şu an boş olan bu nesneyi dolduracağım, söz.
   car!: Car;
   brand!: Brand;
   colour!: Colour;

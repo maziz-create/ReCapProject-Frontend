@@ -63,14 +63,14 @@
                 <div class="col-md form-group">
                     <label for="rent-start-date-input" class="form-label text-dark">Pick-up Date:</label>
                     <input [ngModel]="rentStartDate | date: 'yyyy-MM-ddThh:mm'" (ngModelChange)="rentStartDate = $event"
-                        name="rentStartDate" class="form-control"  type="datetime-local"
-                        id="rent-start-date-input" required />
+                        name="rentStartDate" class="form-control" type="datetime-local" id="rent-start-date-input"
+                        required />
                 </div>
                 <div class="col-md form-group">
                     <label for="rent-end-date-input" class="form-label text-dark">Return Date:</label>
                     <input [ngModel]="rentEndDate | date: 'yyyy-MM-ddThh:mm'" (ngModelChange)="rentEndDate = $event"
-                        name="rentEndDate" class="form-control" type="datetime-local"
-                        id="rent-end-date-input" required />
+                        name="rentEndDate" class="form-control" type="datetime-local" id="rent-end-date-input"
+                        required />
                 </div>
                 <button type="submit" (click)="rentCar()"
                     class="col-lg btn btn-warning rounded-1 mt-3 p-3 m-lg-0 p-lg-0">
