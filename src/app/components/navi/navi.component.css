@@ -1,10 +1,3 @@
-nav {
-    background-color: antiquewhite;
-    border-end-end-radius: 5px;
-    border-end-start-radius: 5px;
-    margin-bottom: 1rem;
-}
-
 .navbar-brand {
     font-size: 1.8rem;
     z-index: 1;
@@ -15,7 +8,6 @@ nav {
     margin: 0 0.8rem;
     color: #333 !important;
     font-size: 1.1rem;
-    /* font-family: "Poppins"; */
 }
 
 .nav-link:after {
