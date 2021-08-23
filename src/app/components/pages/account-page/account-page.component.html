@@ -57,7 +57,7 @@
             }" placeholder="{{ (userDetail$ | async)?.firstName }} {{
               (userDetail$ | async)?.lastName
             }}" />
-                <div class="invalid-feedback">Please enter your last name.</div>
+                <div class="invalid-feedback">Please enter your company name.</div>
             </div>
         </div>
 
@@ -119,7 +119,7 @@
                 </div>
             </div>
         </div>
-        <button (click)="updateAccount()" class="btn btn-primary">
+        <button (click)="updateAccount()" class="btn btn-primary mb-3">
             Update Account
         </button>
     </form>
